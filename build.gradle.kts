@@ -1,6 +1,11 @@
+plugins {
+    `maven-publish`
+}
+
 allprojects {
     setupGroup()
     version = "0.0.1"
+    setupMavenPublish()
 }
 
 /**
@@ -20,4 +25,16 @@ fun Project.setupGroup() {
 
     group = if (subpackage.isBlank()) "ru.vs"
     else "ru.vs.$subpackage"
+}
+
+/**
+ * Настраивает публикацию в maven репозиторий для [Project].
+ */
+fun Project.setupMavenPublish() {
+    apply { plugin("maven-publish") }
+    publishing {
+        repositories {
+            mavenLocal()
+        }
+    }
 }
