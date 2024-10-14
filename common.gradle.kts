@@ -4,6 +4,7 @@
  * Включает в себя такие настройки как:
  * 1) Репозитории плагинов
  * 2) Репозитории проектов
+ * 3) Каталоги версий
  */
 
 pluginManagement {
@@ -18,5 +19,11 @@ dependencyResolutionManagement {
     repositories {
         mavenLocal()
         mavenCentral()
+    }
+
+    versionCatalogs {
+        create("libs") {
+            from(files("libs.versions.toml"))
+        }
     }
 }

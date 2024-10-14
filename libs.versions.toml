@@ -1,0 +1,9 @@
+[versions]
+
+# Kotlin
+kotlin-core = "2.0.0"
+
+[libraries]
+
+# Gradle plugins
+gradlePlugins-kotlin-core = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-core" }
