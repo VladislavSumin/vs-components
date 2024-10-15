@@ -1,26 +1,10 @@
 /**
- * Общая часть для всех settings.gradle.kts
- *
- * Включает в себя такие настройки как:
- * 1) Репозитории плагинов
- * 2) Репозитории проектов
- * 3) Каталоги версий
+ * Общая часть для всех settings.gradle.kts внутри проекта vs-components
  */
 
-pluginManagement {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-    }
-}
+apply { from("repositories.gradle.kts") }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
     versionCatalogs {
         create("libs") {
             from(files("libs.versions.toml"))
