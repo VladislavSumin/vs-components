@@ -1,7 +1,7 @@
 apply { from("common.gradle.kts") }
 
 pluginManagement {
-    includeBuild("build-logic/kotlin")
+    includeBuild("build-logic")
 }
 
 rootProject.name = "vs-components"

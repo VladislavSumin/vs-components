@@ -1,6 +1,7 @@
 package ru.vs.convention.kotlin
 
 import org.gradle.accessors.dm.LibrariesForLibs
+import ru.vs.build_logic.gradleKotlinDslAccessorsFix
 
 /**
  * Базовая настройка JVM таргета для KMP.
@@ -10,8 +11,6 @@ plugins {
     id("ru.vs.convention.kotlin.common")
 }
 
-val libs = the<LibrariesForLibs>()
-
 kotlin {
     jvm()
 
@@ -19,7 +18,10 @@ kotlin {
         jvmTest {
             dependencies {
                 implementation(kotlin("test-junit5"))
-                implementation(libs.mockk)
+                gradleKotlinDslAccessorsFix {
+                    val libs = the<LibrariesForLibs>()
+                    implementation(libs.mockk)
+                }
             }
         }
     }

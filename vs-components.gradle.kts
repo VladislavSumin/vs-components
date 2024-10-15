@@ -7,18 +7,19 @@
  *    кода в рамках основного проекта без необходимости переключаться в vs-components напрямую.
  * 2) false - большая часть проекта тянется с maven репозитория, в этом режиме проект синхронизируется и собирается
  *    быстрее, если нет необходимости редактировать код в vs-components, то лучше использовать этот режим.
- *
- * TODO выкладывать каталоги версий на maven, не подключать их при выключенном флаге.
- * TODO выкладывать build-logic на maven, не подключать их при выключенном флаге.
- *
  */
 
 val useLocalBuild = providers.gradleProperty("ru.vs.components.useLocalBuild").getOrElse("false").toBoolean()
+val version = providers.gradleProperty("ru.vs.components.version").get()
 
-apply { from("common.gradle.kts") }
+apply { from("repositories.gradle.kts") }
 
 pluginManagement {
-    includeBuild(file("build-logic/kotlin"))
+    // TODO поддержать это
+     val useLocalBuild = providers.gradleProperty("ru.vs.components.useLocalBuild").getOrElse("false").toBoolean()
+     if (useLocalBuild) {
+        includeBuild(file("build-logic"))
+     }
 }
 
 if (useLocalBuild) {
@@ -27,8 +28,11 @@ if (useLocalBuild) {
 
 dependencyResolutionManagement {
     versionCatalogs {
+        create("libs") {
+            from("ru.vs.version-catalogs:libs:${version}")
+        }
         create("vsComponents") {
-            from(files("vs-components.versions.toml"))
+            from("ru.vs.version-catalogs:vs-components:${version}")
         }
     }
 }
