@@ -4,6 +4,6 @@ vs-components = "0.0.1"
 
 [libraries]
 
-core-logger-api = { module = "ru.vs.core.logger:api", version.ref = "vs-components" }
-core-logger-manager = { module = "ru.vs.core.logger:manager", version.ref = "vs-components" }
-core-logger-platform = { module = "ru.vs.core.logger:platform", version.ref = "vs-components" }
+core-logger-api = { module = "ru.vs.vs-components.core.logger:api", version.ref = "vs-components" }
+core-logger-manager = { module = "ru.vs.vs-components.core.logger:manager", version.ref = "vs-components" }
+core-logger-platform = { module = "ru.vs.vs-components.core.logger:platform", version.ref = "vs-components" }

@@ -29,10 +29,10 @@ if (useLocalBuild) {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            from("ru.vs.version-catalogs:libs:${version}")
+            from("ru.vs.vs-components.version-catalogs:libs:${version}")
         }
         create("vsComponents") {
-            from("ru.vs.version-catalogs:vs-components:${version}")
+            from("ru.vs.vs-components.version-catalogs:vs-components:${version}")
         }
     }
 }

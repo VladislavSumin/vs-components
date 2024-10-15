@@ -11,7 +11,7 @@ allprojects {
 fun Project.setupGroup() {
     val path = mutableListOf<String>()
     var project = this.parent
-    while (project != null && project != project.rootProject) {
+    while (project != null) {
         path += project.name
         project = project.parent
     }
